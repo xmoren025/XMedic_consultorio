@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +14,39 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // \App\Models\User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+
+        User::create([
+            'name'=> 'Ximena Moreno',
+            'email'=>'ximena@domain.com',
+            'password'=>Hash::make('12345678'),
+            'tipo'=> 'Administrador'
+        ]);
+
+        User::create([
+            'name'=> 'Secretaria 1',
+            'email'=>'secretaria@domain.com',
+            'password'=>Hash::make('12345678'),
+            'tipo'=> 'Secretaria'
+        ]);
+
+        User::create([
+            'name'=> 'Doctor 1',
+            'email'=>'doctor@domain.com',
+            'password'=>Hash::make('12345678'),
+            'tipo'=> 'Doctor'
+        ]);
+
+        User::create([
+            'name'=> 'Paciente1',
+            'email'=>'paciente1@domain.com',
+            'password'=>Hash::make('12345678'),
+            'tipo'=> 'Paciente'
         ]);
     }
 }
