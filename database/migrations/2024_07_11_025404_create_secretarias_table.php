@@ -16,9 +16,7 @@ return new class extends Migration
             $table->string('nombres', 100);
             $table->string('apellidos', 100);
             $table->string('curp',18)->unique();
-            $table->string('celular', 10);
-            $table->string('fecha_nacimiento', 100);
-            $table->string('direccion', 100);
+            $table->string('celular', 10);            $table->string('direccion', 100);
 
             
             $table->unsignedBigInteger('user_id');

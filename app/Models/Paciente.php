@@ -22,4 +22,12 @@ class Paciente extends Model
         'alergias',
         'contacto_emergencia',
     ];
+
+    public function citas(){
+        return $this->hasMany(Cita::class);
+    }
+
+    public function consultas(){
+        return $this->hasMany(Consulta::class);
+    }
 }

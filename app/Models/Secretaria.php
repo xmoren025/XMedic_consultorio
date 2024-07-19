@@ -9,7 +9,20 @@ class Secretaria extends Model
 {
     use HasFactory;
 
-    public function user(){
-        return $this->belongTo(User::class);
+    public function citas(){
+        return $this->hasMany(Cita::class);
     }
+
+    public function productos(){
+        return $this->hasMany(Producto::class);
+    }
+
+    public function servicios(){
+        return $this->hasMany(Servicio::class);
+    }
+
+    public function consultas(){
+        return $this->hasMany(Consulta::class);
+    }
+
 }

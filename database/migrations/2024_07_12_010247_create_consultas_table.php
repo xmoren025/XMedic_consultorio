@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('paciente_id');
             $table->unsignedBigInteger('doctor_id');
             $table->timestamp('fecha');
+            $table->string('estado');
 
             $table->string('diagnostico')->nullable;
             $table->string('tratamiento')->nullable; 

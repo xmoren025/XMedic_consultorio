@@ -29,8 +29,6 @@
                                 <input type="text" value="{{old('apellidos')}}" name="apellidos" class="form-control" required>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-3">
                             <div class="form group">
                                 <label for="">CURP</label> <b>*</b>
@@ -61,7 +59,19 @@
                                 </select>
                             </div>
                         </div>
-                        
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Tipo sanguineo</label><b>*</b>
+                                <select id="" name="tipo_sanguineo" class="form-control" required>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>   
                     <br>
                     <div class="row">
@@ -81,6 +91,16 @@
                                 @error('celular')
                                     <small style="color:red">{{$message}}</small>
                                 @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form group">
+                                <label for="">Contacto de emergencia</label><b>*</b>
+                                <input type="text" name="contacto_emergencia" class="form-control" required>
+                                @error('contacto_emergencia')
+                                <small style="color:red">{{$message}}</small>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                     <br>
@@ -94,19 +114,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Tipo sanguineo</label><b>*</b>
-                                <select id="" name="tipo_sanguineo" class="form-control" required>
-                                    <option value="A+">A+</option>
-                                    <option value="A-">A-</option>
-                                    <option value="B+">B+</option>
-                                    <option value="B-">B-</option>
-                                    <option value="O+">O+</option>
-                                    <option value="O-">O-</option>
-                                </select>
-                            </div>
-                        </div>
+                    
                         <div class="col-md-6">
                             <div class="form group">
                                 <label for="">Alergias</label>
@@ -117,18 +125,7 @@
                     <br>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form group">
-                                <label for="">Contacto de emergencia</label><b>*</b>
-                                <input type="text" name="contacto_emergencia" class="form-control" required>
-                                @error('contacto_emergencia')
-                                <small style="color:red">{{$message}}</small>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <br><br>
-                    <div class="row">
-                        <div class="col-md-12">
+                        <hr>
                             <div class="form group">
                                 <a href="{{url('admin/pacientes')}}" class="btn btn-secondary">Cancelar</a>
                                 <button type="submit" class="btn btn-primary">Registrar</button>

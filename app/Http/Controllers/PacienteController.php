@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Paciente;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class PacienteController extends Controller
@@ -77,23 +78,23 @@ class PacienteController extends Controller
      */
     public function update(Request $request, $id){
         $paciente = Paciente::find($id);
-        $request->validate([
+
+        $validatedData = $request->validate([
             'nombres'=> 'required',
             'apellidos'=> 'required',
             'sexo'=>'required',
-            'curp'=> 'required|unique:pacientes',
+            'curp' => ['required', Rule::unique('pacientes')->ignore($paciente->id)],
             'celular'=>'required',
 
             'fecha_nacimiento' => 'required|date|before:today',
-            'correo'=>'required|max:250|unique:pacientes',
+            'correo' => ['required', 'string', 'email', 'max:250', Rule::unique('pacientes')->ignore($paciente->id)],
             'direccion'=>'required',
             'tipo_sanguineo'=>'required',
             'alergias'=>'required',
             'contacto_emergencia'=>'required',
         ]);
-        Paciente::edit($request->all());
+        $paciente->update($validatedData);
         
-        $usuario->save();
         return redirect()->route('admin.pacientes.index')
             ->with('mensaje','Datos actualizados correctamente.')
             ->with('icono','success');

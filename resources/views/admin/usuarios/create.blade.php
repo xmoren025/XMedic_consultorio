@@ -38,17 +38,6 @@
                         </div>
                     </div>
                     <br>
-                    <div class="col-md-5">
-                            <div class="form-group">
-                                <label>Rol</label><b>*</b>
-                                <select id="tipo" name="tipo" class="form-control" required>
-                                    <option value="Administrador">Administrador</option>
-                                    <option value="Secretaria">Secretaria</option>
-                                    <option value="Doctor">Doctor</option>
-                                </select>
-                            </div>
-                        </div>
-                    <br>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form group">
@@ -75,6 +64,7 @@
                     <br>
                     <div class="row">
                         <div class="col-md-12">
+                        <hr>
                             <div class="form group">
                                 <a href="{{url('admin/usuarios')}}" class="btn btn-secondary">Cancelar</a>
                                 <button type="submit" class="btn btn-primary">Registrar</button>

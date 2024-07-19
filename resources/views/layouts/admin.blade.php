@@ -194,16 +194,41 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="bi bi-clock-history"></i>
+              <p>
+                Horarios
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('admin/horarios/create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Registrar horario</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('admin/horarios')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de horarios</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <br>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('logout')}}" class="nav-link" id="" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
               <i class="nav-icon fas bi bi-box-arrow-right"></i>
               <p>
                 Cerrar sesión
               </p>
             </a>
-          </li>
-          
+            <form id="logout-form" action="{{route('logout')}}" method="POST" class="d-none">
+              @csrf
+            </form>
+            </li>        
         </ul>
         
       </nav>

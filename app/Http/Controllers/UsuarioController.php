@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
@@ -30,7 +31,6 @@ class UsuarioController extends Controller
         $usuario->name =$request->name;
         $usuario->email =$request->email;
         $usuario->password = Hash::make($request['password']);
-        $usuario->tipo = $request->tipo;
         $usuario->save();
 
         return redirect()->route('admin.usuarios.index')
@@ -52,21 +52,21 @@ class UsuarioController extends Controller
     }
 
     public function update(Request $request, $id){
-        $usuario = User::find($id);
-        $request->validate([
+        $usuario = User::findOrFail($id);
+        
+        $validatedData = $request->validate([
             'name'=>'required|max:250',
-            'email'=>'required|max:250|unique:users,email,'.$usuario->id,
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($usuario->id)],
             'password'=>'nullable|max:250|confirmed',
-            'tipo'=>'required',
+
         ]);
         $usuario->name = $request->name;
-        $usuario->email = $request->email;
+        $usuario->email = $validatedData['email'];
         
         if($request->filled('password')){
             $usuario->password = Hash::make($request['password']);
 
         }
-        $usuario->tipo = $request->tipo;
         $usuario->save();
         return redirect()->route('admin.usuarios.index')
             ->with('mensaje','Datos actualizados correctamente.')

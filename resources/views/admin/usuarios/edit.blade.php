@@ -65,6 +65,7 @@
                     <br>
                     <div class="row">
                         <div class="col-md-12">
+                            <hr>
                             <div class="form group">
                                 <a href="{{url('admin/usuarios')}}" class="btn btn-secondary">Cancelar</a>
                                 <button type="submit" class="btn btn-success">Actualizar datos</button>

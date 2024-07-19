@@ -16,7 +16,12 @@ return new class extends Migration
             $table->string('nombres', 100);
             $table->string('apellidos', 100);
             $table->string('celular', 10);
+            $table->string('licencia_medica', 8);
             $table->string('especialidad', 100);
+            
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Servicio extends Model
 {
     use HasFactory;
+
+    public function secretarias(){
+        return $this->belongsTo(Secretaria::class);
+    }
+
+    public function doctors(){
+        return $this->hasMany(Doctor::class);
+    }
 }
